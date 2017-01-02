@@ -180,6 +180,8 @@ if USE_NEW_EDITOR.get():
         popular: '${ _('Popular') }',
         meta: {
           keyword: '${ _('keyword') }',
+          table: '${ _('table') }',
+          view: '${ _('view') }',
         }
       }
     };
