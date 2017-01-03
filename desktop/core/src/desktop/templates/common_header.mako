@@ -173,15 +173,11 @@ if USE_NEW_EDITOR.get():
 
     AutocompleterGlobals = {
       i18n: {
-        keywords: '${ _('Keywords') }',
-        columns: '${ _('Columns') }',
-        tables: '${ _('Tables') }',
-        databases: '${ _('Databases') }',
-        popular: '${ _('Popular') }',
         meta: {
           keyword: '${ _('keyword') }',
           table: '${ _('table') }',
           view: '${ _('view') }',
+          virtual: '${ _('virtual') }'
         }
       }
     };
