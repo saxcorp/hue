@@ -177,7 +177,8 @@ if USE_NEW_EDITOR.get():
           keyword: '${ _('keyword') }',
           table: '${ _('table') }',
           view: '${ _('view') }',
-          virtual: '${ _('virtual') }'
+          virtual: '${ _('virtual') }',
+          commonTableExpression:  '${ _('cte') }'
         }
       }
     };
