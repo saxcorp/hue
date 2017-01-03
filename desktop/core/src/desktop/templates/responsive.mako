@@ -38,9 +38,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <link href="${ static('desktop/ext/css/bootplus.css') }" rel="stylesheet">
   <link href="${ static('desktop/css/hue3.css') }" rel="stylesheet">
   <link href="${ static('desktop/ext/css/font-awesome.min.css') }" rel="stylesheet">
+  <link href="${ static('desktop/css/bootstrap2.css') }" rel="stylesheet">
+  <link href="${ static('desktop/css/bootstrap-responsive2.css') }" rel="stylesheet">
   <link href="${ static('desktop/css/responsive.css') }" rel="stylesheet">
   <link href="${ static('desktop/css/jquery-ui.css') }" rel="stylesheet">
 

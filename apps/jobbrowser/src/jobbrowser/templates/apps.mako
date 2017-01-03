@@ -24,7 +24,7 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
 <%namespace name="assist" file="/assist.mako" />
 % endif
 
-<span class="notebook">
+<span class="notebook page-header-and-main-content">
 
 <link rel="stylesheet" href="${ static('desktop/ext/css/basictable.css') }">
 <link rel="stylesheet" href="${ static('notebook/css/notebook.css') }">
@@ -62,24 +62,16 @@ ${ assist.assistPanel() }
 
 % endif
 
-<div class="navbar navbar-inverse navbar-fixed-top nokids">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="currentApp">
-              <a href="/${app_name}">
-                <img src="${ static('jobbrowser/art/icon_jobbrowser_48.png') }" class="app-icon"/>
-                ${ _('Job Browser') }
-              </a>
-            </li>
-          </ul>
-          % if not hiveserver2_impersonation_enabled:
-            <div class="pull-right alert alert-warning" style="margin-top: 4px">${ _("Hive jobs are running as the 'hive' user") }</div>
-          % endif
-        </div>
-      </div>
-    </div>
+<div class="page-header">
+  <h1 class="currentApp">
+    <a href="/${app_name}">
+      <img src="${ static('jobbrowser/art/icon_jobbrowser_48.png') }" class="app-icon"/>
+      ${ _('Job Browser') }
+    </a>
+  </h1>
+  % if not hiveserver2_impersonation_enabled:
+    <div class="pull-right alert alert-warning" style="margin-top: 4px">${ _("Hive jobs are running as the 'hive' user") }</div>
+  % endif
 </div>
 <div id="jobbrowserComponents">
 <div class="main-content">

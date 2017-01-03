@@ -2628,7 +2628,7 @@ $(document).ready(function () {
     $('#queryContainer').show();
     $('#resizePanel').show();
     $('a[href="#query"]').parent().show();
-    $('.navbar-fixed-top').show();
+    $('.page-header').show();
     $('.resultsContainer').css('marginTop', '20px');
   }
 
@@ -2641,7 +2641,7 @@ $(document).ready(function () {
     $('a[href="#query"]').parent().hide();
     $('a[href="#recentTab"]').parent().hide();
     $('a[href="#queryBuilderTab"]').parent().hide();
-    $('.navbar-fixed-top').hide();
+    $('.page-header').hide();
     $('.resultsContainer').css('marginTop', '-50px');
   }
 
