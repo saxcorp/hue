@@ -140,8 +140,6 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
               </span>
             </span>
 
-            <i class="fa fa-calendar"></i>
-
             <div class="btn-toolbar" style="display: inline; vertical-align: middle; margin-left: 10px; font-size: 12px">
               <span class="loader hide"><i class="fa fa-2x fa-spinner fa-spin muted"></i></span>
               <button class="btn bulkToolbarBtn bulk-resume" data-operation="resume" title="${ _('Resume selected') }" disabled="disabled" type="button"><i class="fa fa-play"></i><span class="hide-small"> ${ _('Resume') }</span></button>
@@ -155,24 +153,24 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
                 <tr>
                   <th width="1%"><div class="select-all hueCheckbox fa"></div></th>
                   <th>${_('Duration')}</th>
+                  <th>${_('Type')}</th>
                   <th>${_('Status')}</th>
                   <th>${_('Progress')}</th>
-                  <th>${_('Id')}</th>
                   <th>${_('Name')}</th>
-                  <th>${_('Type')}</th>
                   <th>${_('User')}</th>
+                  <th>${_('Id')}</th>
                 </tr>
                 </thead>
                 <tbody data-bind="foreach: jobs.apps">
                   <tr data-bind="click: fetchJob">
                     <td><div class="hueCheckbox fa"></div></td>
                     <td data-bind="text: duration"></td>
+                    <td data-bind="text: type"></td>
                     <td data-bind="text: status"></td>
                     <td data-bind="text: progress"></td>
-                    <td data-bind="text: id"></td>
                     <td data-bind="text: name"></td>
-                    <td data-bind="text: type"></td>
                     <td data-bind="text: user"></td>
+                    <td data-bind="text: id"></td>
                   </tr>
                 </tbody>
               </table>
@@ -194,11 +192,26 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
             <!-- /ko -->
           <!-- /ko -->
 
+          <div data-bind="template: { name: 'pagination' }"></div>
       </div>
     </div>
   </div>
 </div>
 </div>
+
+
+<script type="text/html" id="pagination">
+  Showing
+  <span data-bind="text: paginationPage"></span>
+  to
+  <span data-bind="text: paginationOffset() * paginationResultPage()"></span>
+  of
+  <span data-bind="text: paginationResultCounts"></span>
+  
+  Show
+  <span data-bind="text: paginationOffset"></span>
+  results by page.
+</script>
 
 
 <script type="text/html" id="job-page">
@@ -233,6 +246,7 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
   ${ _('Submitted') } <span data-bind="text: submitted"></span>
 </script>
 
+
 <script type="text/html" id="job-mapreduce-page">
   <h2>MapReduce</h2>
   <br/>
@@ -245,7 +259,27 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
   ${ _('Progress') } <span data-bind="text: progress"></span>
   ${ _('Duration') } <span data-bind="text: duration"></span>
   ${ _('Submitted') } <span data-bind="text: submitted"></span>
+
+  Map 100 Reduce 50
+  Duration 8s
+  
+  Tasks | Metadata | Counters
 </script>
+
+<script type="text/html" id="job-mapreduce-task-page">
+  <h2>MapReduce Task</h2>
+  <br/>
+  
+  Task Attemps | Metadata | Counters
+</script>
+
+<script type="text/html" id="job-mapreduce-task-attempt-page">
+  <h2>MapReduce Task attempt</h2>
+  <br/>
+  
+  Container | Metadata | Counters
+</script>
+
 
 <script type="text/html" id="job-impala-page">
   <h2>Impala</h2>
@@ -430,6 +464,11 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
         hueUtils.changeURL('#!' + val);
         self.jobs.fetchJobs();
       });
+                                                                           
+      self.paginationOffset = ko.observable(0);
+      self.paginationResultPage = ko.observable(100);
+      self.paginationPage = ko.observable(1);
+      self.paginationResultCounts = ko.observable();
     };
 
     var viewModel;
